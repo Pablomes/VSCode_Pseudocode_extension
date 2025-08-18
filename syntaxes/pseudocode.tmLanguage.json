@@ -1,0 +1,103 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Cambridge Pseudocode",
+	"patterns": [
+		{ "include": "#operators"},
+		{ "include": "#keyword_operators"},
+		{ "include": "#keywords" },
+		{ "include": "#misc_keywords"},
+		{ "include": "#builtin_funcs"},
+		{ "include": "#boolean_constants"},
+		{ "include": "#strings" },
+		{ "include": "#characters"},
+		{ "include": "#arguments"},
+		{ "include": "#subroutine_name"},
+		{ "include": "#datatypes"},
+		{ "include": "#parameters"},
+		{ "include": "#numbers"},
+		{ "include": "#subroutine_call"},
+		{ "include": "#variables"}
+	],
+	"repository": {
+		"operators": {
+			"patterns": [{
+				"name": "keyword.operator.new",
+				"match": "(<-|<=|>=|<>|=|\\+|\\-|\\*|\\^|/|&|<|>)"
+			}]
+		},
+		"keyword_operators": {
+			"patterns": [{
+				"name": "keyword.operator.new",
+				"match": "\\b(AND|DIV|MOD|NOT|OR)\\b"
+			}]
+		},
+		"boolean_constants": {
+			"patterns": [{
+				"name": "constant.language.boolean.pseudocode",
+				"match": "\\b(TRUE|FALSE)\\b"
+			}]
+		},
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.pseudocode",
+				"match": "\\b(CASE|DO|ELSE|ENDCASE|ENDFUNCTION|ENDIF|ENDPROCEDURE|ENDWHILE|FOR|FUNCTION|IF|NEXT|OTHERWISE|PROCEDURE|REPEAT|RETURN|RETURNS|STEP|THEN|TO|UNTIL|WHILE)\\b"
+			}]
+		},
+		"misc_keywords": {
+			"patterns": [{
+				"name": "keyword.other",
+				"match": "\\b(APPEND|BYREF|CALL|CLOSEFILE|CONSTANT|DECLARE|OF|INPUT|OPENFILE|OUTPUT|READ|READFILE|WRITE|WRITEFILE)\\b"
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.pseudocode",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.pseudocode",
+					"match": "\\\\."
+				}
+			]
+		},
+		"characters": {
+  			"name": "string.quoted.single",
+  			"match": "'([^\\\\']|\\\\.)'"
+		},
+		"arguments": {
+  			"name": "variable.argument",
+  			"match": "\\b[a-zA-Z_][a-zA-Z0-9_]*\\b(?=\\s*(,|\\)))"
+		},
+		"subroutine_name": {
+  			"name": "entity.name.function",
+  			"match": "(?<=\\b(FUNCTION|PROCEDURE)\\s)[a-zA-Z_][a-zA-Z0-9_]*"
+		},
+		"datatypes": {
+  			"name": "storage.type",
+  			"match": "\\b(INTEGER|REAL|BOOLEAN|CHAR|STRING|ARRAY)\\b"
+		},
+		"parameters": {
+			"name": "variable.parameter",
+			"match": "\\b[a-zA-Z_][a-zA-Z0-9_]*\\b(?=\\s*:)"
+		},
+		"numbers": {
+			"name": "constant.numeric",
+			"match": "\\b[0-9]+(\\.[0-9]+)?\\b"
+		},
+		"variables": {
+			"name": "variable.name",
+			"match": "\\b[a-zA-Z_][a-zA-Z0-9_]*\\b"
+		},
+		"subroutine_call": {
+			"name": "entity.name.function",
+			"match": "\\b[a-zA-Z_][a-zA-Z0-9_]*\\b(?=\\s*\\()"
+		},
+		"builtin_funcs": {
+			"name": "support.function",
+			"match": "\\b(SUBSTRING|LENGTH|LCASE|UCASE|RANDOMBETWEEN|RND|INT|EOF|CHARAT)\\b"
+		}
+
+
+	},
+	"scopeName": "main.pcsc"
+}

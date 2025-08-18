@@ -1,0 +1,106 @@
+{
+  "name": "pseudocode",
+  "displayName": "Cambridge Pseudocode",
+  "publisher": "Pablo Mestre Alonso",
+  "description": "",
+  "version": "0.0.1",
+  "license": "GNU General Public License 3.0",
+  "engines": {
+    "vscode": "^1.103.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "pseudocode",
+      "aliases": ["Cambridge Pseudocode", "pseudocode"],
+      "extensions": [".pcsc",".pcc"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "pseudocode",
+      "scopeName": "main.pcsc",
+      "path": "./syntaxes/pseudocode.tmLanguage.json"
+    }],
+    "tasks": [
+      {
+        "label": "Build pseudocode",
+        "type": "shell",
+        "command": "pseudoc ${file} ${fileBasenameNoExtension}",
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "presentation": {
+          "reveal": "always"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "Run pseudocode",
+        "type": "shell",
+        "command": "pseudor ${file}",
+        "group": "test",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always"
+        }
+      }
+    ],
+    "debuggers": [
+      {
+        "type": "pseudocode",
+        "label": "Cambridge Pseudocode Runner",
+        "languages": ["pseudocode"],
+        "configurationSnippets": [
+          {
+            "label": "Run Pseudocode program.",
+            "description": "Compile and run a Pseudocode program with pseudor.",
+            "body": {
+              "type": "pseudocode",
+              "request": "launch",
+              "name": "Run Pseudocode program."
+            }
+          }
+        ]
+      }
+    ],
+    "commands": [
+      {
+        "category": "Pseudocode",
+        "command": "pseudocode.run",
+        "title": "Run Pseudocode File",
+        "icon": "$(play)"
+      },
+      {
+        "category": "Pseudocode",
+        "command": "pseudocode.build",
+        "title": "Build Pseudocode File",
+        "icon": "$(tools)"
+      }
+    ],
+    "menus": {
+      "editor/title/run": [
+        {
+          "command": "pseudocode.run",
+          "when": "resourceLangId == pseudocode && shellExecutionSupported",
+          "group": "Psuedocode"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "pseudocode.build",
+          "when": "resourceLangId == pseudocode && shellExecutionSupported",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "activationEvents": [
+    "onLanguage:pseudocode",
+    "onCommand:pseudocode.run",
+    "onCommand:pseudocode.build"
+  ],
+  "main": "./extension.js"
+}

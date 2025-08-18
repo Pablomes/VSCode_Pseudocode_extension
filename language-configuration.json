@@ -1,0 +1,74 @@
+{
+    "comments": {
+        // symbol used for single line comment. Remove this entry if your language does not support line comments
+        "lineComment": "//"
+    },
+    // symbols used as brackets
+    "brackets": [
+        ["[", "]"],
+        ["(", ")"]
+    ],
+    // symbols that are auto closed when typing
+    "autoClosingPairs": [
+        ["[", "]"],
+        ["(", ")"],
+        ["\"", "\""],
+        ["'", "'"]
+    ],
+    // symbols that can be used to surround a selection
+    "surroundingPairs": [
+        ["[", "]"],
+        ["(", ")"],
+        ["\"", "\""],
+        ["'", "'"]
+    ],
+
+    // Word pattern for double-click selection, symbol navigation
+    "wordPattern": "[A-Za-z_$][A-Za-z0-9_$]*",
+
+    "indentationRules": {
+        "increaseIndentPattern": "^(\\s)*(IF|FOR|WHILE|FUNCTION|PROCEDURE|CASE|REPEAT|ELSE)\\b.*$",
+        "decreaseIndentPattern": "^(\\s)*(ENDIF|ENDWHILE|ENDFUNCTION|ENDPROCEDURE|ENDCASE|UNTIL|NEXT|ELSE)\\b.*$"
+    },
+
+    "onEnterRules": [
+        {
+            "beforeText": "^(\\s)*(IF|FOR|WHILE|FUNCTION|PROCEDURE|CASE|REPEAT|ELSE)\\b.*$",
+            "afterText": "^.*$",
+            "action": {
+                "indent": "indent"
+            }
+        },
+        {
+            "beforeText": "^(\\s)*(ENDIF|ENDWHILE|ENDFUNCTION|ENDPROCEDURE|ENDCASE|UNTIL|NEXT)\\b.*$",
+            "afterText": "^.*$",
+            "action": {
+                "indent": "outdent"
+            }
+        }
+    ],
+
+    "colorizedBracketPairs": [
+        [
+            "(",
+            ")"
+        ],
+        [
+            "[",
+            "]"
+        ],
+        [
+            "{",
+            "}"
+        ]
+    ],
+
+    "autoCloseBefore": ";:.,=}])> \n\t",
+
+    "folding": {
+        "markers": {
+            "start": "^\\s*(IF|FOR|WHILE|FUNCTION|PROCEDURE|CASE|ELSE|REPEAT)\\b",
+            "end": "^\\s*(ENDIF|ENDWHILE|ENDFUNCTION|ENDPROCEDURE|ENDCASE|UNTIL|NEXT)\\b"
+        }
+    }
+}
