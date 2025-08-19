@@ -49,7 +49,10 @@ function activate(context) {
         }
         const fileName = editor.document.fileName;
         const fileBase = fileName.replace(/\.[^/.]+$/, "");
-        const terminal = vscode.window.createTerminal({ name: "Pseudocode Build" });
+        let terminal = vscode.window.activeTerminal;
+        if (terminal == undefined) {
+            terminal = vscode.window.createTerminal({ name: "Pseudocode Build" });
+        }
         terminal.show();
         terminal.sendText(`pseudoc "${fileName}" "${fileBase}"`);
     });
@@ -61,7 +64,10 @@ function activate(context) {
             return;
         }
         const fileName = editor.document.fileName;
-        const terminal = vscode.window.createTerminal({ name: "Pseudocode Run" });
+        let terminal = vscode.window.activeTerminal;
+        if (terminal == undefined) {
+            terminal = vscode.window.createTerminal({ name: "Pseudocode Run" });
+        }
         terminal.show();
         terminal.sendText(`pseudor "${fileName}"`);
     });
