@@ -3,7 +3,7 @@
   "displayName": "Cambridge Pseudocode",
   "publisher": "MestreAlonso",
   "description": "",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "license": "GNU General Public License 3.0",
   "repository": {
     "type": "git",
@@ -11,9 +11,9 @@
   },
   "icon": "icon.png",
   "galleryBanner": {
-        "color": "#1e415e",
-        "theme": "dark"
-    },
+    "color": "#1e415e",
+    "theme": "dark"
+  },
   "engines": {
     "vscode": "^1.103.0"
   },
@@ -21,17 +21,27 @@
     "Programming Languages"
   ],
   "contributes": {
-    "languages": [{
-      "id": "pseudocode",
-      "aliases": ["Cambridge Pseudocode", "pseudocode"],
-      "extensions": [".pcsc",".pcc"],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "pseudocode",
-      "scopeName": "main.pcsc",
-      "path": "./syntaxes/pseudocode.tmLanguage.json"
-    }],
+    "languages": [
+      {
+        "id": "pseudocode",
+        "aliases": [
+          "Cambridge Pseudocode",
+          "pseudocode"
+        ],
+        "extensions": [
+          ".pcsc",
+          ".pcc"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "pseudocode",
+        "scopeName": "main.pcsc",
+        "path": "./syntaxes/pseudocode.tmLanguage.json"
+      }
+    ],
     "tasks": [
       {
         "label": "Build pseudocode",
@@ -61,7 +71,9 @@
       {
         "type": "pseudocode",
         "label": "Cambridge Pseudocode Runner",
-        "languages": ["pseudocode"],
+        "languages": [
+          "pseudocode"
+        ],
         "configurationSnippets": [
           {
             "label": "Run Pseudocode program.",
